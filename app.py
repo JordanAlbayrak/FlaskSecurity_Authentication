@@ -3,11 +3,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 import jwt
 import datetime
+import os
+from dotenv import load_dotenv
 from functools import wraps
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = "secret123"
+
+load_dotenv()
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 
 class User:
